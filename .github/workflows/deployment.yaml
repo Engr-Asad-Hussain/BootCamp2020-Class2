@@ -33,11 +33,11 @@ jobs:
         uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install # will run `yarn install or npm install` command
-                       # Whenever you commit, node modules donot commited so all the libraries are not commit to git hub. Check the repository there will not be node_module file. 
-                       # For that we are telling githib that you have to create instance unbuntu and in that instance install yarn/npm so that libraries get installed. 
+                       # Whenever you commit, node_modules donot commited so all the libraries are not commit to git hub. Check the repository there will not be node_module folder. 
+                       # For that we are telling githib that you have to create instance unbuntu and in that instance install yarn/npm so that libraries (npm) get installed. 
       
       - name: Building yarn
-        run: yarn build
+        run: yarn build # This is used to create build folder just like node_module
       
       - name: Installing Surge
         run: npm install --global surge
