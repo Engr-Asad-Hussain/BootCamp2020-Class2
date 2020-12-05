@@ -6,14 +6,13 @@ name: React App Deploy to Surge
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    branches: [ master ]    
+    # If there are multiple branches then [ master, development production ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
+  # There are two types of Jobs, 1. Job: This is normal job which we are doing. 2. CronJob: This job is schedule at particular time and repeate itself.
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -33,7 +32,12 @@ jobs:
       - name: Installing Yarn using Github Actions
         uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: install # will run `yarn install` command
+          cmd: install # will run `yarn install or npm install` command
+                       # Whenever you commit, node modules donot commited so all the libraries are not commit to git hub. Check the repository there will not be node_module file. 
+                       # For that we are telling githib that you have to create instance unbuntu and in that instance install yarn/npm so that libraries get installed. 
+      
+      - name: Building yarn
+        run: yarn build
       
       - name: Installing Surge
         run: npm install --global surge
