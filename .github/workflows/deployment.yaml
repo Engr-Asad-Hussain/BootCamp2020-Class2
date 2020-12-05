@@ -35,7 +35,7 @@ jobs:
           cmd: install # will run `yarn install or npm install` command
                        # Whenever you commit, node_modules donot commited so all the libraries are not commit to git hub. Check the repository there will not be node_module folder. 
                        # For that we are telling githib that you have to create instance unbuntu and in that instance install yarn/npm so that libraries (npm) get installed. 
-      
+                       # So we write /build and /node_module in .gitignore file so that git ignore it while pushinh.
       - name: Building yarn
         run: yarn build # This is used to create build folder just like node_module
       
