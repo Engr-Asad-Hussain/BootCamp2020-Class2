@@ -40,3 +40,4 @@ jobs:
       
       - name: Deployment to Surge
         run:  surge ./build smart-plantation.surge.sh --token ${{ secrets.SURGE_TOKEN }
+        # ./build means here we have index.html file inside the build folder
